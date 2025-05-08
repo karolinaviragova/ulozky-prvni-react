@@ -3,17 +3,20 @@
 // Zadání 3. V dalším odstavci `<p>` zobrazte, kolik má text znaků.
 // Zadání 4. Poslední odstavec zobrazte pouze v případě, že je text kratší než 8 znaků.
 
+import { useState } from "react";
+
 export const Bonus1 = () => {
+  const [text, setText] = useState("")
   return (
     <>
       <label>
-        Napiš něco: <input />
+        Napiš něco: <input onChange={(e) => {setText(e.target.value)}}/>
       </label>
       <p>
-        Do políčka výše uživatel napsal: <b>@TODO</b>
+        Do políčka výše uživatel napsal: <b>{text}</b>
       </p>
-      <p>Počet znaků: 0</p>
-      <p>Jako heslo by text neobstál.</p>
+      <p>Počet znaků: {text.length}</p>
+      <p>{text.length < 8 && "Jako heslo by text neobstál."}</p>
     </>
   );
 };
